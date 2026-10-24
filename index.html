@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NUSANTARA//BREACH</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="kotak" id="kotak">
+    <h1 data-teks="NUSANTARA//BREACH">NUSANTARA//BREACH</h1>
+    <p class="sub">Retas sistem dengan menyusun kata sandi budaya Indonesia</p>
+
+    <!-- Papan status -->
+    <div class="status">
+      <div><small>SKOR</small><b id="skor">0</b></div>
+      <div><small>INTEGRITAS</small><b id="nyawa">■■■</b></div>
+      <div><small>WAKTU</small><b id="waktu">20</b></div>
+      <div><small>REKOR</small><b id="rekor">0</b></div>
+    </div>
+
+    <!-- Bar waktu -->
+    <div class="bar"><div id="isiBar"></div></div>
+
+    <!-- Soal -->
+    <p class="petunjuk"><span class="label">PETUNJUK</span> <span id="petunjuk">-</span></p>
+    <div id="acak" class="acak">?</div>
+
+    <!-- Jawaban -->
+    <form id="form">
+      <input type="text" id="jawaban" placeholder="ketik kata sandi..." autocomplete="off">
+      <button type="submit">CEK</button>
+    </form>
+
+    <div class="tombol">
+      <button id="btnHint">HINT (-5)</button>
+      <button id="btnLewati" class="merah">LEWATI</button>
+    </div>
+
+    <!-- Pesan ala terminal -->
+    <div class="terminal">&gt; <span id="pesan">Tekan MULAI untuk memulai peretasan</span><span class="kursor">_</span></div>
+
+    <button id="btnMulai" class="mulai">MULAI PERETASAN</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+/* ===== Tema hacker: latar gelap + neon ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00ff9c;
+  font-family: "Courier New", monospace;
+  /* grid bergerak sebagai latar */
+  background:
+    radial-gradient(circle at 50% 0%, #0a3d33, transparent 60%),
+    linear-gradient(rgba(0, 255, 156, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 156, 0.07) 1px, transparent 1px),
+    #05070d;
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  animation: gerakGrid 6s linear infinite;
+}
+
+@keyframes gerakGrid {
+  to { background-position: 0 0, 0 40px, 40px 0; }
+}
+
+/* ===== Kotak utama ===== */
+.kotak {
+  width: 92%;
+  max-width: 520px;
+  margin: 20px 0;
+  padding: 26px;
+  text-align: center;
+  background: rgba(8, 14, 26, 0.92);
+  border: 2px solid #00ff9c;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 255, 156, 0.5), inset 0 0 25px rgba(0, 255, 156, 0.08);
+}
+
+/* ===== Judul dengan efek glitch ===== */
+h1 {
+  position: relative;
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 3px;
+  text-shadow: 0 0 12px #00ff9c;
+}
+
+h1::before,
+h1::after {
+  content: attr(data-teks);
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  animation: glitch 2.5s infinite steps(1);
+}
+
+h1::before {
+  color: #ff2e88;
+  clip-path: inset(0 0 60% 0);
+}
+
+h1::after {
+  color: #29d8ff;
+  clip-path: inset(60% 0 0 0);
+  animation-delay: 1s;
+}
+
+@keyframes glitch {
+  0%, 90%, 100% { transform: translateX(0); }
+  92% { transform: translateX(-4px); }
+  96% { transform: translateX(4px); }
+}
+
+.sub {
+  margin: 8px 0 18px;
+  color: #7fb8a4;
+  font-size: 13px;
+}
+
+/* ===== Papan status ===== */
+.status {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.status div {
+  padding: 8px 4px;
+  background: #050a12;
+  border: 1px solid #1c3a35;
+  border-radius: 6px;
+}
+
+.status small {
+  display: block;
+  color: #6f9a92;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.status b {
+  font-size: 18px;
+  color: #29d8ff;
+}
+
+/* ===== Bar waktu ===== */
+.bar {
+  height: 10px;
+  margin: 14px 0;
+  background: #050a12;
+  border: 1px solid #1c3a35;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#isiBar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #00ff9c, #29d8ff);
+  transition: width 1s linear;
+}
+
+#isiBar.habis {
+  background: linear-gradient(90deg, #ff2e88, #ffc83d);
+}
+
+/* ===== Soal ===== */
+.petunjuk {
+  color: #e8fff6;
+  font-size: 14px;
+}
+
+.label {
+  padding: 2px 8px;
+  margin-right: 6px;
+  background: #ff2e88;
+  color: #1a0410;
+  font-size: 11px;
+  border-radius: 4px;
+}
+
+.acak {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+  min-height: 56px;
+  font-size: 30px;
+}
+
+/* tiap huruf menjadi kotak bercahaya */
+.huruf {
+  width: 44px;
+  height: 52px;
+  line-height: 52px;
+  color: #29d8ff;
+  background: rgba(41, 216, 255, 0.1);
+  border: 1px solid #29d8ff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(41, 216, 255, 0.5);
+  animation: muncul 0.4s backwards;
+}
+
+.huruf:hover {
+  transform: translateY(-4px);
+  background: rgba(41, 216, 255, 0.3);
+}
+
+@keyframes muncul {
+  from { opacity: 0; transform: translateY(-20px) rotate(-15deg); }
+}
+
+/* ===== Form dan tombol ===== */
+input {
+  width: 62%;
+  padding: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  color: #00ff9c;
+  background: #050a12;
+  border: 1px solid #00ff9c;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 12px #00ff9c;
+}
+
+button {
+  padding: 11px 16px;
+  margin: 6px 3px;
+  color: #00ff9c;
+  background: transparent;
+  border: 1px solid #00ff9c;
+  border-radius: 6px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  color: #05070d;
+  background: #00ff9c;
+  box-shadow: 0 0 15px #00ff9c;
+}
+
+button.merah {
+  color: #ff2e88;
+  border-color: #ff2e88;
+}
+
+button.merah:hover {
+  color: #05070d;
+  background: #ff2e88;
+  box-shadow: 0 0 15px #ff2e88;
+}
+
+.mulai {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  font-size: 16px;
+  letter-spacing: 3px;
+  background: rgba(0, 255, 156, 0.12);
+}
+
+/* ===== Terminal pesan ===== */
+.terminal {
+  margin-top: 12px;
+  padding: 10px;
+  min-height: 42px;
+  text-align: left;
+  font-size: 14px;
+  background: #02050a;
+  border: 1px solid #1c3a35;
+  border-radius: 6px;
+}
+
+.kursor {
+  animation: kedip 1s infinite;
+}
+
+@keyframes kedip {
+  50% { opacity: 0; }
+}
+
+.benar { color: #00ff9c; }
+.salah { color: #ff2e88; }
+
+/* ===== Efek getar saat salah ===== */
+.goyang {
+  animation: goyang 0.4s;
+  border-color: #ff2e88;
+}
+
+@keyframes goyang {
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
